@@ -40,6 +40,7 @@ namespace DoLess.Localization.ResourceFileHandlers
 
             if (!string.Equals(originalContent, content, StringComparison.InvariantCulture))
             {
+                this.logger.LogInfo($"Writing '{this.filePath}'.");
                 File.WriteAllText(this.filePath, content);
             }
             else

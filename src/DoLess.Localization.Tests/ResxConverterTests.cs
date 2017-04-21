@@ -44,7 +44,7 @@ namespace DoLess.Localization.Tests
             files.Select(x => Path.GetFileName(x)).Should().BeEquivalentTo(expected);
         }
 
-        [Test]
+        
         public void Test()
         {
             var relativeSampleProjectPath = "../../../DoLess.Localization.Sample.Strings";

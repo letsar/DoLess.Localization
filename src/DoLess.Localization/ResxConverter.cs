@@ -47,9 +47,15 @@ namespace DoLess.Localization
             if (configurationFilePath != null)
             {
                 ConfigurationData config = this.ReadConfigurationFile(configurationFilePath);
-                if (this.IsConfigurationValid(config))
+                if (config == null)
+                {
+                    this.logger.LogError("The configuration file is null");
+                    return false;
+                }
+                else
                 {
                     this.MakePlatformProjectFolderFullPaths(config);
+
                     if (!this.IsFolderExists(config.FolderPathOfAndroidProject))
                     {
                         config.FolderPathOfAndroidProject = null;
@@ -60,25 +66,31 @@ namespace DoLess.Localization
                         config.FolderPathOfiOSProject = null;
                     }
 
-                    Dictionary<string, SortedDictionary<string, string>> languageToResources = new Dictionary<string, SortedDictionary<string, string>>();
-
-                    var resxFilePaths = this.FindResxFiles();
-                    foreach (var resxFilePath in resxFilePaths)
+                    if (this.IsConfigurationValid(config))
                     {
-                        this.ReadResxFile(resxFilePath, languageToResources);
-                    }
+                        Dictionary<string, SortedDictionary<string, string>> languageToResources = new Dictionary<string, SortedDictionary<string, string>>();
 
-                    if (config.FolderPathOfAndroidProject != null)
-                    {
-                        this.WritePlatformProject(config, languageToResources, this.GetAndroidResourceFileHandler);
-                    }
+                        this.logger.LogInfo("Reading resx files.");
+                        var resxFilePaths = this.FindResxFiles();
+                        foreach (var resxFilePath in resxFilePaths)
+                        {
+                            this.ReadResxFile(resxFilePath, languageToResources);
+                        }
 
-                    if (config.FolderPathOfiOSProject != null)
-                    {
-                        this.WritePlatformProject(config, languageToResources, this.GetiOSResourceFileHandler);
-                    }
+                        if (config.FolderPathOfAndroidProject != null)
+                        {
+                            this.logger.LogInfo("Writing Android resource files.");
+                            this.WritePlatformProject(config, languageToResources, this.GetAndroidResourceFileHandler);
+                        }
 
-                    return true;
+                        if (config.FolderPathOfiOSProject != null)
+                        {
+                            this.logger.LogInfo("Writing iOS resource files.");
+                            this.WritePlatformProject(config, languageToResources, this.GetiOSResourceFileHandler);
+                        }
+
+                        return true;
+                    }
                 }
             }
 
@@ -125,13 +137,7 @@ namespace DoLess.Localization
 
         private bool IsConfigurationValid(ConfigurationData config)
         {
-            if (config == null)
-            {
-                this.logger.LogError("The configuration file is null");
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(config.FolderPathOfAndroidProject) && string.IsNullOrWhiteSpace(config.FolderPathOfiOSProject))
+            if (config.FolderPathOfAndroidProject == null && config.FolderPathOfiOSProject == null)
             {
                 this.logger.LogError("One platform project must be set");
                 return false;

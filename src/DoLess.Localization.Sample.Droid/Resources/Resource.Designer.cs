@@ -76,11 +76,44 @@ namespace DoLess.Localization.Sample.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
-			
 			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			public const int ApplicationName = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int Hello = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int Message1 = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int Message2 = 2130968579;
+			
+			// aapt resource value: 0x7f040004
+			public const int Message3 = 2130968580;
+			
+			// aapt resource value: 0x7f040005
+			public const int String1 = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int String2 = 2130968582;
+			
+			// aapt resource value: 0x7f040007
+			public const int String3 = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int String4 = 2130968584;
+			
+			// aapt resource value: 0x7f040009
+			public const int String5 = 2130968585;
+			
+			// aapt resource value: 0x7f04000a
+			public const int String6 = 2130968586;
+			
+			// aapt resource value: 0x7f04000b
+			public const int String7 = 2130968587;
+			
+			// aapt resource value: 0x7f04000c
+			public const int String8 = 2130968588;
 			
 			static String()
 			{
