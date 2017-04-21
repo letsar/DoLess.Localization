@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="Message1">Message 1 fr</string>
+  <string name="Message2">Message 2 fr</string>
+  <string name="Message3">Message 3 fr</string>
+  <string name="String1">Valeur 1</string>
+  <string name="String2">Valeur 2</string>
+  <string name="String3">Valeur 3</string>
+  <string name="String4">Valeur 4</string>
+</resources>

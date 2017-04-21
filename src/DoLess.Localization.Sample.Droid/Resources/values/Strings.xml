@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="ApplicationName">DoLess.Bindings.Sample.Droid</string>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="Message1">Message 1</string>
+  <string name="Message2">Message 2</string>
+  <string name="Message3">Message 3</string>
+  <string name="String1">Value 1</string>
+  <string name="String2">Value 2</string>
+  <string name="String3">Value 3</string>
+  <string name="String4">Value 4</string>
+  <string name="String5">String with "quotes"</string>
+  <string name="String6">String with 
+newline</string>
+  <string name="String7">String with a \backslash</string>
+  <string name="String8">String with xml chars &lt; &amp; </string>
+</resources>
