@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace DoLess.Localization.ResourceFileHandlers
 {
-    public class AndroidResourceFileHandler : ResourceFileHandler
+    public sealed class AndroidResourceFileHandler : ResourceFileHandler
     {
         private const string ElementName = "string";
         private const string KeyAttributeName = "name";
@@ -25,7 +25,7 @@ namespace DoLess.Localization.ResourceFileHandlers
 
             foreach (var resource in resources)
             {
-                xResources.Add(new XElement(ElementName, new XAttribute(KeyAttributeName, resource.Key), resource.Value));
+                xResources.Add(new XElement(ElementName, new XAttribute(KeyAttributeName, resource.Key), Encode(resource.Value)));
             }
 
             // The ToString method on XDocument does not keep the declaration.
@@ -42,7 +42,7 @@ namespace DoLess.Localization.ResourceFileHandlers
                 xDoc.Save(writer);
                 writer.Flush();
                 ms.Seek(0, SeekOrigin.Begin);
-                result = sr.ReadToEnd();                
+                result = sr.ReadToEnd();
             }
             return result;
         }
@@ -63,9 +63,19 @@ namespace DoLess.Localization.ResourceFileHandlers
                 {
                     var key = item.Attribute(KeyAttributeName).Value;
                     var value = item.Value;
-                    this.Add(key, value);
+                    this.Add(key, Decode(value));
                 }
             }
+        }
+
+        protected override string Decode(string text)
+        {
+            return text.Replace("\\'", "'");
+        }
+
+        protected override string Encode(string text)
+        {            
+            return text.Replace("'", "\\'");
         }
     }
 }

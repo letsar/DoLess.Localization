@@ -142,4 +142,7 @@ newline</value>
   <data name="String8" xml:space="preserve">
     <value>String with xml chars &lt; &amp; </value>
   </data>
+  <data name="String9" xml:space="preserve">
+    <value>String with apostrophe don't failed</value>
+  </data>
 </root>

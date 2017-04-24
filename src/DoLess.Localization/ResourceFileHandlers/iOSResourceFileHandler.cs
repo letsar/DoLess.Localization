@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DoLess.Localization.ResourceFileHandlers
 {
-    public class iOSResourceFileHandler : ResourceFileHandler
+    public sealed class iOSResourceFileHandler : ResourceFileHandler
     {
         private static readonly char[] PairSeparator = new[] { '=' };
         private readonly string NeutralFolderName = "Base";
@@ -59,6 +59,7 @@ namespace DoLess.Localization.ResourceFileHandlers
         {
             // https://developer.xamarin.com/guides/ios/advanced_topics/localization_and_internationalization/.
             return text.Replace("\\\"", "\"")
+                       .Replace("\\'", "'")
                        .Replace("\\\\", "\\")
                        .Replace("\\n", "\n");
         }
@@ -67,6 +68,7 @@ namespace DoLess.Localization.ResourceFileHandlers
         {
             // https://developer.xamarin.com/guides/ios/advanced_topics/localization_and_internationalization/.
             return text.Replace("\"", "\\\"")
+                       .Replace("'", "\\'")
                        .Replace("\\", "\\\\")
                        .Replace("\n", "\\n");
         }
