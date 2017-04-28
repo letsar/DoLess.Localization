@@ -10,9 +10,8 @@
   <string name="String3">Value 3</string>
   <string name="String4">Value 4</string>
   <string name="String5">String with "quotes"</string>
-  <string name="String6">String with 
-newline</string>
+  <string name="String6">String with \nnewline</string>
   <string name="String7">String with a \backslash</string>
   <string name="String8">String with xml chars &lt; &amp; </string>
-  <string name="String9">String with apostrophe don\'t failed</string>
+  <string name="String9">String with apostrophe don\\\'t failed</string>
 </resources>

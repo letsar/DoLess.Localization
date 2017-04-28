@@ -70,12 +70,14 @@ namespace DoLess.Localization.ResourceFileHandlers
 
         protected override string Decode(string text)
         {
-            return text.Replace("\\'", "'");
+            return text.Replace("\\'", "'")
+                       .Replace("\\n", "\n"); ;
         }
 
         protected override string Encode(string text)
         {            
-            return text.Replace("'", "\\'");
+            return text.Replace("'", "\\'")
+                       .Replace("\n", "\\n");
         }
     }
 }
