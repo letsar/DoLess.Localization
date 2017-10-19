@@ -58,16 +58,16 @@ namespace DoLess.Localization.ResourceFileHandlers
         protected override string Decode(string text)
         {
             // https://developer.xamarin.com/guides/ios/advanced_topics/localization_and_internationalization/.
-            return text.Replace("\\\"", "\"")                       
-                       .Replace("\\\\", "\\")
+            return text.Replace("\\\\", "\\")
+                       .Replace("\\\"", "\"")
                        .Replace("\\n", "\n");
         }
 
         protected override string Encode(string text)
         {
             // https://developer.xamarin.com/guides/ios/advanced_topics/localization_and_internationalization/.
-            return text.Replace("\"", "\\\"")                       
-                       .Replace("\\", "\\\\")
+            return text.Replace("\\", "\\\\")
+                       .Replace("\"", "\\\"")
                        .Replace("\n", "\\n");
         }
     }
